@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./index.css"> -->
+    <link rel="stylesheet" href="./profile.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="navigation">
+        <img src="../image/clg.jpg" alt="clg logo" style="width:10%;">
+        <span>
+            <div class="centered">
+                <h1>Employee Mangaement System</h1>
+            </div>
+        </span>
+
+    </div>
+    <span>
+        <div class="top">
+            <p>
+                <button class="button" data-modal="modalTwo">Profile</button>
+            </p>
+            <p>
+                <button class="button" data-modal="modalOne">Apply leave</button>
+            </p>
+            <p>
+                <button class="button"><a style="text-decoration:none" href="/logout">Logout</a></button>
+               </p>
+    
+           <p>
+            <button class="button"><a style="text-decoration:none" href="/pleave">My Leave</a></button>
+           </p>
+        </div>
+    </span>
+
+    <div id="modalOne" class="modal">
+        <div class="modal-content">
+            <div class="contact-form">
+                <a class="close">&times;</a>
+                <form action="/leave" method="POST" enctype="multipart/form-data">
+                    <h2>Apply Leave</h2>
+                    <div>
+                        <input type="email" id="name" placeholder="xyz@gmail.com" name="username" required><br><br>
+
+                        <select name="leave" id="cars">
+                            <option name="leave" value="Casual Leave">Casual Leave</option>
+                            <option name="leave" value="saab">Maternity Leave</option>
+                            <option name="leave" value="Maternity Leave">Special Casual Leave</option>
+                            <option name="leave" value="Earned Leave">Earned Leave</option>
+                            <option name="leave" value="Sick Leave">Sick Leave </option>
+                            <option name="leave" value="audi">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" href="/">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <span class="back">
+        <i class="fas fa-long-arrow-alt-left"></i>
+      
+    </span>
+
+    <section class="profile_container">
+        <div class="profile_img_section">
+            <img class="profile_img-LG" src="./uploads/<%= user.image %>" alt="profile image">
+            <div class="flag_wrapper">
+            </div>
+        </div>
+
+        <div class="profile_desc_section">
+            <h2>
+                <%=user.ename%>
+            </h2>
+            <h3>
+                <%=user.username%>
+            </h3>
+            <p class="description"><%=user.about%></p>
+
+            <div class="interests">
+                <span class="interests_item">
+                    <%=user.designation%>
+                </span>
+                <span class="interests_item">
+                EIE Department
+                </span>
+                <span class="interests_item">Leadership</span>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="info">
+        <ul>
+            <li>
+                <div class="link_img_wrapper">
+                    <img class="link_img"
+                        src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/271/round-pushpin_1f4cd.png"
+                        alt="">
+                </div>
+                <p>Punjab, India</p>
+            </li>
+            <li>
+                <div class="link_img_wrapper">
+                    <img class="link_img"
+                        src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/271/speaking-head_1f5e3-fe0f.png"
+                        alt="">
+                </div>
+                <p>Hindi, English</p>
+            </li>
+            <li>
+                <div class="link_img_wrapper">
+                    <img class="link_img"
+                        src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/265/globe-with-meridians_1f310.png"
+                        alt="">
+                </div>
+                <p>Electrical & Instrumenation Department</p>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        let modalBtns = [...document.querySelectorAll(".button")];
+        modalBtns.forEach(function (btn) {
+            btn.onclick = function () {
+                let modal = btn.getAttribute("data-modal");
+                document.getElementById(modal).style.display = "block";
+            };
+        });
+        let closeBtns = [...document.querySelectorAll(".close")];
+        closeBtns.forEach(function (btn) {
+            btn.onclick = function () {
+                let modal = btn.closest(".modal");
+                modal.style.display = "none";
+            };
+        });
+        window.onclick = function (event) {
+            if (event.target.className === "modal") {
+                event.target.style.display = "none";
+            }
+        };
+    </script>
+</body>
+
+</html>

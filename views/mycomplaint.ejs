@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./leave.css">
+    <title>complaint</title>
+    
+</head>
+
+<body>
+    <div class="top">
+
+    </div>
+    <div class="navigation">
+        <img src="../image/clg.jpg" alt="clg logo" style="width:10%;">
+      <span ><div class="centered"><h1>Employee Mangaement System</h1></div></span>
+
+    </div>
+</span>
+    
+<span>
+    <div class="top">
+        <p>
+            <button class="button" ><a style="text-decoration:none" href="/">Home</a></button>
+        </p>
+     <p>
+         <button class="button"  data-modal="modalOne">Sign In</button>
+     </p>
+     <p>
+         <button class="button" data-modal="modalThree">Login</button>
+     </p>
+     <p>
+         <button class="button" data-modal="modalTwo">Send a Compliant Form</button>
+     </p>
+     <p>
+         <button class="button" data-modal="modalFour">Admin Signup</button>
+     </p>
+     <p>
+         <button class="button" data-modal="modalFive">Admin Login</button>
+     </p>
+     <p>
+         <button class="button" ><a style="text-decoration:none" href="/mycomplaint">Complaints</a></button>
+     </p>
+    </div>
+   
+ </div></span>
+ <div></div>
+  <div>
+    <table border="1">
+        <tr><th>Compalin date</th>
+            <th>Department</th>
+        <th>complain deatils</th></tr> 
+        <%if (user1.length>0){ %>
+            <% user1.forEach(function(row){ %>
+             
+                    <tr>  <div>
+                        <td>
+                            <%= row.joindate %>
+                        </td>
+                        <td>
+                            <%= row.department %>
+                        </td>
+                        <td class="c">
+                            <%= row.complain%>
+                            </td>
+                </tr>
+</div>
+
+<% })}else{ %>
+    <tr>
+        <td colspan="6">No Record Found</td>
+
+    </tr>
+    <% } %>
+  </div>
+   
+    <div id="modalOne" class="modal">
+        <div class="modal-content">
+            <div class="contact-form">
+                <a class="close">&times;</a>
+                <form action="/register" method="POST" enctype="multipart/form-data">
+                    <h2>Sign In</h2>
+                    <div>
+                        <input type="text" id="name" placeholder="Name" name="ename" required><br><br>
+                        <input type="file" id="image" name="image" required><br><br>
+                        <input type="email" id="name" placeholder="xyz@gmail.com" name="username" required><br><br>
+                        <input type="text" id="cede" name="designation" placeholder="Designation" required><br><br>
+                      
+                        <input type="password"  placeholder="Password" name="password" ><br><br>
+                        <textarea id="cede" name="about" placeholder="About" ></textarea><br><br>
+                    </div>
+                    <button type="submit" href="/">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="modalThree" class="modal">
+    <div class="modal-content">
+        <div class="contact-form">
+            <a class="close">&times;</a>
+            <form action="/login" method="POST">
+                <h2>Login</h2>
+                <div>
+                    <input type="email id="name" placeholder="xyz@gmail.com" name="username" required><br><br>
+                    <input type="password" placeholder="Password" name="password" ><br><br>
+                </div>
+                <button type="submit" href="/login">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    <div id="modalTwo" class="modal">
+        <div class="modal-content">
+            <div class="contact-form">
+                <span class="close">&times;</span>
+                <form action="/add" method="POST" enctype="multipart/form-data">
+                    <h2>Compliant</h2>
+                    <div>
+                        <input type="text" id="name" placeholder="Name" name="username" required><br><br>
+                        <input type="text" id="cede" name="department" placeholder="Department" required><br><br>
+                        <input type="date" id="jdate" name="joindate" required><br><br>
+                    </div>
+                    <span name="complain">Message</span>
+                    <div>
+                        <textarea  name="complain" rows="4"></textarea>
+                    </div>
+                    <button type="submit" href="/">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div id="modalFour" class="modal">
+        <div class="modal-content">
+            <div class="contact-form">
+                <a class="close">&times;</a>
+                <form action="/aregister" method="POST" enctype="multipart/form-data">
+                    <h2>Sign In</h2>
+                    <div>
+                        <input type="text" id="name" placeholder="Name" name="ename" required><br><br>
+                        <input type="email" id="name" placeholder="xyz@gmail.com" name="username" required><br><br>
+                        <input type="text" id="cede" name="designation" placeholder="Designation" required><br><br>
+                       <input type="password"  placeholder="Password" name="password" ><br><br>
+                    </div>
+                    <button type="submit" href="/">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="modalFive" class="modal">
+        <div class="modal-content">
+            <div class="contact-form">
+                <a class="close">&times;</a>
+                <form action="/alogin" method="POST">
+                    <h2>Login</h2>
+                    <div>
+                        <input type="email id="name" placeholder="xyz@gmail.com" name="username" required><br><br>
+                        <input type="password" name="password" ><br><br>
+                    </div>
+                    <button type="submit" href="/login">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let modalBtns = [...document.querySelectorAll(".button")];
+        modalBtns.forEach(function (btn) {
+            btn.onclick = function () {
+                let modal = btn.getAttribute("data-modal");
+                document.getElementById(modal).style.display = "block";
+            };
+        });
+        let closeBtns = [...document.querySelectorAll(".close")];
+        closeBtns.forEach(function (btn) {
+            btn.onclick = function () {
+                let modal = btn.closest(".modal");
+                modal.style.display = "none";
+            };
+        });
+        window.onclick = function (event) {
+            if (event.target.className === "modal") {
+                event.target.style.display = "none";
+            }
+        };
+    </script>
+</body>
+
+</html>

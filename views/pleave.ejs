@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./index.css"> -->
+    <link rel="stylesheet" href="./profile.css">
+    <link rel="stylesheet" href="./leave.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="navigation">
+        <img src="../image/clg.jpg" alt="clg logo" style="width:10%;">
+        <span>
+            <div class="centered">
+                <h1>Employee Mangaement System</h1>
+            </div>
+        </span>
+
+    </div>
+    <span>
+        <div class="top">
+            <p>
+                <button class="button"><a style="text-decoration:none" href="/profile">Profile</a></button>
+            </p>
+            <p>
+                <button class="button" data-modal="modalOne">Apply leave</button>
+            </p>
+           <p>
+            <button class="button"><a style="text-decoration:none" href="/logout">Logout</a></button>
+           </p>
+           <p>
+            <button class="button"><a style="text-decoration:none" href="/pleave">My Leave</a></button>
+           </p>
+
+        </div>
+    </span>
+
+    <div id="modalOne" class="modal">
+        <div class="modal-content">
+            <div class="contact-form">
+                <a class="close">&times;</a>
+                <form action="/leave" method="POST" enctype="multipart/form-data">
+                    <h2>Apply Leave</h2>
+                    <div>
+                        <input type="email" id="name" placeholder="xyz@gmail.com" name="username" required><br><br>
+
+                        <select name="leave" id="cars">
+                            <option name="leave" value="Casual Leave">Casual Leave</option>
+                            <option name="leave" value="Maternity Leave">Maternity Leave</option>
+                            <option name="leave" value="Special Casual Leave">Special Casual Leave</option>
+                            <option name="leave" value="Earned Leave">Earned Leave</option>
+                            <option name="leave" value="Sick Leave">Sick Leave </option>
+                            <option name="leave" value="audi">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" href="/">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <span class="back">
+        <i class="fas fa-long-arrow-alt-left"></i>
+      
+    </span>
+    <table border="1">
+        <%if (user1.length>0){ %>
+            <% user1.forEach(function(row){ %>
+                <tr>
+                    <div>
+                        <!-- <td>
+                            <%= row.username %>
+                        </td> -->
+                        <td>
+                            <%= row.leave%>
+                        
+                </tr>
+</div>
+
+<% })}else{ %>
+    <tr>
+        <td colspan="6">No Record Found</td>
+
+    </tr>
+    <% } %>
+        </form>
+   
+    <script>
+        let modalBtns = [...document.querySelectorAll(".button")];
+        modalBtns.forEach(function (btn) {
+            btn.onclick = function () {
+                let modal = btn.getAttribute("data-modal");
+                document.getElementById(modal).style.display = "block";
+            };
+        });
+        let closeBtns = [...document.querySelectorAll(".close")];
+        closeBtns.forEach(function (btn) {
+            btn.onclick = function () {
+                let modal = btn.closest(".modal");
+                modal.style.display = "none";
+            };
+        });
+        window.onclick = function (event) {
+            if (event.target.className === "modal") {
+                event.target.style.display = "none";
+            }
+        };
+    </script>
+</body>
+
+</html>
